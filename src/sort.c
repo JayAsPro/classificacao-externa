@@ -6,16 +6,5 @@
 
     TRABALHO 1 - Classificação Externa por Seleção com Substituição
 
-    Funções auxiliares para tarefas básicas.
+    Implementação das funções em sort.h.
 */
-
-#ifndef UTILS_H
-#define UTILS_H
-
-void clear_buffer(void);
-
-void pause(void);
-
-void clear_screen(void);
-
-#endif

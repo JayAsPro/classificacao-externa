@@ -6,7 +6,7 @@
 
     TRABALHO 1 - Classificação Externa por Seleção com Substituição
 
-    Este é o código principal do programa, baseado no original criado pela professora.
+    Implementação das funções em utils.h.
 */
 
 #include <stdio.h>

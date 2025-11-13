@@ -6,16 +6,13 @@
 
     TRABALHO 1 - Classificação Externa por Seleção com Substituição
 
-    Funções auxiliares para tarefas básicas.
+    Funções para ordernar um arquivo binário utilizando classificação externa
+    por seleção com substituição.
 */
 
-#ifndef UTILS_H
-#define UTILS_H
+#ifndef SORT_H
+#define SORT_H
 
-void clear_buffer(void);
 
-void pause(void);
-
-void clear_screen(void);
 
 #endif
