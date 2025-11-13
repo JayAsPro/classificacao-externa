@@ -48,5 +48,31 @@ FILE* recria_arquivo(FILE* arq, char nome_arq[]) {
     remove(nome_arq);
     
     arq = fopen(nome_arq, "a+b");
+    if(arq == NULL) {
+        printf("\nErro ao recriar o arquivo %s!\n", nome_arq);
+    }
     return arq;
+}
+
+void popular_dados_teste(FILE* arq) {
+    printf("\nPopulando arquivo com dados de teste...\n");
+    
+    // Dados desordenados para testar a classificação externa
+    insere(arq, 50, 15.50);
+    insere(arq, 10, 25.00);
+    insere(arq, 30, 10.75);
+    insere(arq, 70, 32.40);
+    insere(arq, 20, 18.90);
+    insere(arq, 40, 22.30);
+    insere(arq, 60, 14.20);
+    insere(arq, 15, 28.50);
+    insere(arq, 25, 11.60);
+    insere(arq, 80, 35.00);
+    insere(arq, 5, 9.99);
+    insere(arq, 45, 19.75);
+    insere(arq, 35, 16.80);
+    insere(arq, 55, 27.30);
+    insere(arq, 65, 13.40);
+    
+    printf("\n✓ 15 produtos inseridos com sucesso!\n");
 }

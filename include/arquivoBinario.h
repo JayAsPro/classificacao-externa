@@ -24,4 +24,6 @@ void imprime_todos(FILE* arq);
 
 FILE* recria_arquivo(FILE* arq, char nome_arq[]);
 
+void popular_dados_teste(FILE* arq);
+
 #endif
