@@ -110,7 +110,9 @@ size_t classificacao_externa(FILE* arq) {
     int i = 0;
     do {
         leu = fread(&vet_trabalho[i], sizeof(produto), 1, arq);
-        i += 1;
+        if(leu > 0) {
+            i += 1;
+        }
     } while(i < TAM_VET_TRABALHO && leu > 0);
 
     // Se não conseguiu ler nenhum produto, retornar 0
