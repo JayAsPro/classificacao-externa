@@ -38,8 +38,8 @@ void imprime_todos(FILE* arq) {
     tam = fread(&p, sizeof(produto), 1, arq);
     while (tam > 0) {        
         printf("\nProduto(%d)..", cont);
-        printf("\n  Codigo...: %d", p.cod);
-        printf("\n  Preco..: %.2f", p.preco);
+        printf("\n  Codigo: %d", p.cod);
+        printf("\n  Preco: %.2f", p.preco);
         printf("\n");
         cont++;
         
@@ -112,7 +112,7 @@ int main(void) {
                 break;
             case '3':
                 recria_arquivo(arq, nome_arq);
-                printf("\nArquivo recriado com sucesso...!");
+                printf("\nArquivo recriado com sucesso!");
 
                 pause();
                 break;
