@@ -13,7 +13,7 @@
 
 void limpar_buffer(void) {
     int ch;
-    while((ch = getchar() != '\n') && ch != EOF);
+    while((ch = getchar()) != '\n' && ch != EOF);
 }
 
 void pausar(void) {
