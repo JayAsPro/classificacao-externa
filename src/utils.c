@@ -17,7 +17,7 @@ void clear_buffer(void) {
 }
 
 void pause(void) {
-    printf("\n\nContinuar...");
+    printf("\n\nENTER para continuar...");
     clear_buffer();
 }
 
