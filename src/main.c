@@ -93,7 +93,11 @@ int main(void) {
                 break;
             case '3':
                 arq = recria_arquivo(arq, nome_arq);
-                printf("\nArquivo recriado com sucesso!");
+                if(arq != NULL) {
+                    printf("\nArquivo recriado com sucesso!");
+                } else {
+                    printf("\nErro ao recriar arquivo!");
+                }
 
                 pausar();
                 break;
