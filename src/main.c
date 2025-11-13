@@ -23,6 +23,7 @@ void menu(void) {
     printf("\n(2) Mostrar todos");
     printf("\n(3) Recriar arquivo");
     printf("\n(4) Classificar arquivo");
+    printf("\n(5) Popular com dados de teste");
     printf("\n(0) Sair");
     printf("\n***********************");
     printf("\n\nEscolha: ");
@@ -61,11 +62,21 @@ int main(void) {
         switch(ch) {
             case '1':
                 printf("Informe o codigo: ");
-                scanf("%d", &cod);
+                if(scanf("%d", &cod) != 1) {
+                    printf("\n✗ Código inválido!\n");
+                    limpar_buffer();
+                    pausar();
+                    break;
+                }
                 limpar_buffer();
 
                 printf("Informe o preco: ");
-                scanf("%f", &preco);
+                if(scanf("%f", &preco) != 1) {
+                    printf("\n✗ Preço inválido!\n");
+                    limpar_buffer();
+                    pausar();
+                    break;
+                }
                 limpar_buffer();
                 
                 insere(arq, cod, preco);
@@ -84,6 +95,26 @@ int main(void) {
                 arq = recria_arquivo(arq, nome_arq);
                 printf("\nArquivo recriado com sucesso!");
 
+                pausar();
+                break;
+            case '4':
+                printf("***** Classificação Externa *****\n");
+                printf("Gerando partições ordenadas...\n\n");
+                
+                size_t num_part = classificacao_externa(arq);
+                
+                if(num_part > 0) {
+                    printf("\n✓ %zu partições geradas com sucesso!\n", num_part);
+                    imprime_particoes(num_part);
+                } else {
+                    printf("\n✗ Nenhuma partição foi gerada.\n");
+                }
+                
+                pausar();
+                break;
+            case '5':
+                popular_dados_teste(arq);
+                
                 pausar();
                 break;
         }               
