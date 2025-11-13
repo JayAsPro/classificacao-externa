@@ -13,4 +13,6 @@
 #ifndef SORT_H
 #define SORT_H
 
+FILE* classificacao_externa(FILE* arq);
+
 #endif

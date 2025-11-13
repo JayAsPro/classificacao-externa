@@ -18,4 +18,6 @@ void pausar(void);
 
 void limpar_tela(void);
 
+int soma(int* vet, int tam);
+
 #endif
