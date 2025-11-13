@@ -14,6 +14,7 @@
 #include <locale.h>
 #include <utils.h>
 #include <arquivoBinario.h>
+#include <sort.h>
 
 void menu(void) {
     clear_screen();
