@@ -13,6 +13,12 @@
 #ifndef SORT_H
 #define SORT_H
 
-FILE* classificacao_externa(FILE* arq);
+#include <stdio.h>
+
+// Retorna o número de partições geradas
+size_t classificacao_externa(FILE* arq);
+
+// Imprime as partições geradas
+void imprime_particoes(size_t num_particoes);
 
 #endif
