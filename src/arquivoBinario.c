@@ -6,11 +6,13 @@
 
     TRABALHO 1 - Classificação Externa por Seleção com Substituição
 
-    Este é o código principal do programa, baseado no original criado pela professora.
+    Código principal do programa, baseado no disponibilizado pela professora.
 */
 
 #include <stdio.h>
 #include <locale.h>
+
+#include <utils.h>
 
 typedef struct sproduto {
     int cod;
@@ -52,26 +54,27 @@ void recria_arquivo(FILE* arq, char nome_arq[]) {
     arq = fopen(nome_arq, "a+b");
 }
 
-void menu() {
+void menu(void) {
+    clear_screen();
     printf("******** Agenda ********");
     printf("\n(1) Inserir");
     printf("\n(2) Mostrar todos");
     printf("\n(3) Recriar arquivo");
-    printf("\n(0/ESQ) Sair");
+    printf("\n(4) Classificar arquivo");
+    printf("\n(0) Sair");
     printf("\n***********************");
-    printf("\n\n");
+    printf("\n\nEscolha: ");
 }
 
-int main() {
+int main(void) {
     char nome_arq[] = "arq.bin";    
     FILE* arq;
     
-    int tam;
     char ch;
     int cod;
     float preco;
     
-    setlocale(LC_ALL,"Portuguese");
+    setlocale(LC_ALL, "Portuguese");
     
     arq = fopen(nome_arq, "a+b");
     if (arq == NULL) {
@@ -80,38 +83,44 @@ int main() {
     }
     
     ch = '\0';
-    do {        
-        fflush(stdin);
-
+    do {
         menu();
         ch = getchar();
-        switch (ch) {
+        clear_buffer();
+
+        switch(ch) {
             case '1':
                 printf("Informe o codigo: ");
                 scanf("%d", &cod);
+                clear_buffer();
+
                 printf("Informe o preco: ");
                 scanf("%f", &preco);
+                clear_buffer();
                 
                 insere(arq, cod, preco);
                 printf("\nProduto inserido com sucesso!");
-                getchar();                
+
+                pause();
                 break;    
              case '2':
                 printf("***** Lista de produtos *****");
                 printf("\n\n");
                 imprime_todos(arq);
-                getchar();
+
+                pause();
                 break;
             case '3':
                 recria_arquivo(arq, nome_arq);
-                printf("Arquivo recriado com sucesso...!");
-                getchar();
+                printf("\nArquivo recriado com sucesso...!");
+
+                pause();
                 break;
         }               
-    } while (ch != '0' && (int)ch != 27);
-           
+    } while (ch != '0');
+
     fclose(arq);
+    clear_screen();
    
     return 0;
 }
-

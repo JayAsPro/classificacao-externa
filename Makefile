@@ -1,7 +1,8 @@
-CC = gcc
+INCLUDE_DIR := include
+SRC_DIR := src
 
-bin/arquivoBinario: bin/arquivoBinario.o
-	$(CC) bin/arquivoBinario.o
+CC := gcc
+CCFLAGS := -I$(INCLUDE_DIR) -Wall -Wextra -pedantic
 
-bin/arquivoBinario.o: src/arquivoBinario.c
-	$(CC) src/arquivoBinario.c -o bin/arquivoBinario.o
+main:
+	$(CC) $(SRC_DIR)/* $(CCFLAGS) -o classificacao-externa
