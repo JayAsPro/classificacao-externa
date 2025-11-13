@@ -47,11 +47,12 @@ void imprime_todos(FILE* arq) {
     }
 }
 
-void recria_arquivo(FILE* arq, char nome_arq[]) {
+FILE* recria_arquivo(FILE* arq, char nome_arq[]) {
     fclose(arq);    
     remove(nome_arq);
     
     arq = fopen(nome_arq, "a+b");
+    return arq;
 }
 
 void menu(void) {
@@ -67,14 +68,22 @@ void menu(void) {
 }
 
 int main(void) {
+    /*
+        Desativa o buffer da saída padrão. Contorna o fato de que algumas
+        implementações de C podem, por exemplo, não exibir imediatamente o
+        resultado de um printf se ele não terminar com "\n", a não ser que
+        se faça explicitamente um flush na saída padrão (ex.: musl).
+    */
+    setbuf(stdout, NULL);
+    
+    setlocale(LC_ALL, "Portuguese");
+    
     char nome_arq[] = "arq.bin";    
     FILE* arq;
     
     char ch;
     int cod;
     float preco;
-    
-    setlocale(LC_ALL, "Portuguese");
     
     arq = fopen(nome_arq, "a+b");
     if (arq == NULL) {
@@ -111,7 +120,7 @@ int main(void) {
                 pause();
                 break;
             case '3':
-                recria_arquivo(arq, nome_arq);
+                arq = recria_arquivo(arq, nome_arq);
                 printf("\nArquivo recriado com sucesso!");
 
                 pause();
