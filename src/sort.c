@@ -11,7 +11,6 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <utils.h>
 #include <arquivoBinario.h>
 
 #define TAM_VET_TRABALHO 5
@@ -23,6 +22,9 @@ int i_menor_cod(produto* vet_trabalho, int* pos_validas, int tam) {
         if(vet_trabalho[i].cod < vet_trabalho[i_menor].cod && pos_validas[i])
             i_menor = i;
     }
+
+    if(!pos_validas[i_menor])
+        i_menor = -1;
 
     return i_menor;
 }
@@ -42,11 +44,12 @@ FILE* nova_particao(FILE* arq, size_t num_particao, produto* vet_trabalho) {
             pos_validas[i] = 1;
     }
 
-    while(soma(pos_validas, TAM_VET_TRABALHO) > 0) {
-        int i_menor = i_menor_cod(vet_trabalho, pos_validas, TAM_VET_TRABALHO);
+    int i_menor = i_menor_cod(vet_trabalho, pos_validas, TAM_VET_TRABALHO);
 
+    while(i_menor != -1) {
         fwrite(&vet_trabalho[i_menor], sizeof(produto), 1, part);
         fread(&vet_trabalho[i_menor], sizeof(produto), 1, arq);
+        int i_menor = i_menor_cod(vet_trabalho, pos_validas, TAM_VET_TRABALHO);
     }
 
     return part;
@@ -74,10 +77,8 @@ FILE* classificacao_externa(FILE* arq) {
     } while(particoes[num_particoes - 1] != NULL);
     
     // Finalização.
-    for(size_t i = 0; i < sizeof(particoes); i++) {
+    for(size_t i = 0; i < sizeof(particoes); i++)
         fclose(particoes[i]);
-        // remove();
-    }
     
     free(particoes);
 }

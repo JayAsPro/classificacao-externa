@@ -24,12 +24,3 @@ void pausar(void) {
 void limpar_tela(void) {
     printf("\033c\033[H");
 }
-
-int soma(int* vet, int tam) {
-    int soma = 0;
-
-    for(int i = 0; i < tam; i++)
-        soma += vet[i];
-    
-    return soma;
-}
