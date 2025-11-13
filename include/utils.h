@@ -12,10 +12,10 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-void clear_buffer(void);
+void limpar_buffer(void);
 
-void pause(void);
+void pausar(void);
 
-void clear_screen(void);
+void limpar_tela(void);
 
 #endif

@@ -11,16 +11,16 @@
 
 #include <stdio.h>
 
-void clear_buffer(void) {
+void limpar_buffer(void) {
     int ch;
     while((ch = getchar() != '\n') && ch != EOF);
 }
 
-void pause(void) {
+void pausar(void) {
     printf("\n\nENTER para continuar...");
-    clear_buffer();
+    limpar_buffer();
 }
 
-void clear_screen(void) {
+void limpar_tela(void) {
     printf("\033c\033[H");
 }

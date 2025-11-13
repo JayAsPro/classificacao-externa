@@ -17,7 +17,7 @@
 #include <sort.h>
 
 void menu(void) {
-    clear_screen();
+    limpar_tela();
     printf("******** Lista de produtos ********");
     printf("\n(1) Inserir");
     printf("\n(2) Mostrar todos");
@@ -56,41 +56,41 @@ int main(void) {
     do {
         menu();
         ch = getchar();
-        clear_buffer();
+        limpar_buffer();
 
         switch(ch) {
             case '1':
                 printf("Informe o codigo: ");
                 scanf("%d", &cod);
-                clear_buffer();
+                limpar_buffer();
 
                 printf("Informe o preco: ");
                 scanf("%f", &preco);
-                clear_buffer();
+                limpar_buffer();
                 
                 insere(arq, cod, preco);
                 printf("\nProduto inserido com sucesso!");
 
-                pause();
+                pausar();
                 break;    
              case '2':
                 printf("***** Lista de produtos *****");
                 printf("\n\n");
                 imprime_todos(arq);
 
-                pause();
+                pausar();
                 break;
             case '3':
                 arq = recria_arquivo(arq, nome_arq);
                 printf("\nArquivo recriado com sucesso!");
 
-                pause();
+                pausar();
                 break;
         }               
     } while (ch != '0');
 
     fclose(arq);
-    clear_screen();
+    limpar_tela();
    
     return 0;
 }
